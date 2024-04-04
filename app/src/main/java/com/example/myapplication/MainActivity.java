@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        /*super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -252,6 +252,6 @@ public class MainActivity extends AppCompatActivity {
                 operation[0] = '-';
                 binding.textView2.setText("0");
             }
-        });
+        });*/
     }
 }

@@ -9,29 +9,29 @@
     android:weightSum="5"
     tools:context=".MainActivity">
 
-    <LinearLayout
+   <!-- <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="3"
         android:orientation="horizontal">
-
-        <TextView
+-->
+       <!-- <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:text="0"
-            android:textSize="96sp" />
-    </LinearLayout>
+            android:textSize="96sp" />-->
+  <!--  </LinearLayout>-->
 
-    <LinearLayout
+  <!--  <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="2"
         android:orientation="vertical"
-        android:weightSum="4">
+        android:weightSum="4">-->
 
-        <LinearLayout
+       <!-- <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -186,8 +186,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="-"
-                tools:text="-" />
-        </LinearLayout>
-    </LinearLayout>
+                tools:text="-" />-->
+       <!-- </LinearLayout>-->
+ <!--   </LinearLayout>-->
 
 </LinearLayout>
