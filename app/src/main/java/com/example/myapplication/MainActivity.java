@@ -17,13 +17,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        /*binding.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-        binding.textView.setText("Completed");*/
         final float[] number_first = {0};
         final float[] number_second = {0};
         final float[] result = {0};
