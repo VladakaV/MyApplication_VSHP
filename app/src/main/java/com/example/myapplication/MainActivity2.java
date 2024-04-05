@@ -25,32 +25,19 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity2.this, MainActivity.class);
                 startActivity(intent);
+
             };
         });
+        Log.d("TAG", "OnCreate2: ");
+
+        Bundle arguments = getIntent().getExtras();
+        if (arguments!=null) {
+            String name = arguments.getString("name");
+            String surname = arguments.getString("surname");
+            String ot = arguments.getString("othchestvo");
+            binding.textView.setText(name+ "\n" + surname+ "\n" + ot);
+        }
+
     };
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("TAG", "onStart: ");
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("TAG", "onResume: ");
-    }
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("TAG", "onPause: ");
-    }
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d("TAG", "onRestart: ");
-    }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("TAG", "onDestroy: ");
-    }
+
 }

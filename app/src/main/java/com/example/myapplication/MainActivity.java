@@ -24,6 +24,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                String name = String.valueOf(binding.editTextText.getText());
+                String surname = String.valueOf(binding.editTextText2.getText());
+                String otchestvo = String.valueOf(binding.editTextText3.getText());
+                intent.putExtra("name", name);
+                intent.putExtra("surname", surname);
+                intent.putExtra("othchestvo", otchestvo);
                 startActivity(intent);
             }
 
@@ -274,30 +280,6 @@ public class MainActivity extends AppCompatActivity {
         });*/
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("TAG", "onStart: ");
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("TAG", "onResume: ");
-    }
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("TAG", "onPause: ");
-    }
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d("TAG", "onRestart: ");
-    }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("TAG", "onDestroy: ");
-    }
+
 
 }
