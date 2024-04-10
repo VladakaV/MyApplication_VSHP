@@ -3,39 +3,60 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.myapplication.databinding.ActivityMainBinding;
 
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
-
+    private static final String PREFS_FILE = "Account";
+    private static final String PREF_NAME = "Name";
+    SharedPreferences settings;
+    String[] cars = {"ASD", "fdfdf", "efefe", "eefe"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-
+        settings = getSharedPreferences(PREFS_FILE, MODE_PRIVATE);
+        getName();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cars);
         setContentView(binding.getRoot());
-        //обработка переключения между экранами
-        binding.btnFirst.setOnClickListener(new View.OnClickListener() {
+
+
+        binding.button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                String name = String.valueOf(binding.editTextText.getText());
-                String surname = String.valueOf(binding.editTextText2.getText());
-               /* String otchestvo = String.valueOf(binding.editTextText3.getText());*/
-                Person person = new Person(name ,surname);
-                intent.putExtra("name", person);
-                /*intent.putExtra("othchestvo", otchestvo);*/
-               /* Person person = new Person("Tolya", 23);
-                intent.putExtra(Person.class.getSimpleName(), person);*/
+                saveName();
                 startActivity(intent);
             }
 
         });
+    };
+
+    public void saveName() {
+        EditText nameBox = binding.editTextText;
+        String name = nameBox.getText().toString();
+        SharedPreferences.Editor prefEditor = settings.edit();
+        prefEditor.putString(PREF_NAME, name);
+        prefEditor.apply();
+    }
+    public void getName() {
+        TextView nameView = binding.editTextText2;
+        String name = settings.getString(PREF_NAME, "не определено");
+        nameView.setText(name);
+    }
+
+
+
+
 
 
 
@@ -280,8 +301,7 @@ public class MainActivity extends AppCompatActivity {
                 binding.textView2.setText("0");
             }
         });*/
-    }
-
-
-
 }
+
+
+
