@@ -26,10 +26,12 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 String name = String.valueOf(binding.editTextText.getText());
                 String surname = String.valueOf(binding.editTextText2.getText());
-                String otchestvo = String.valueOf(binding.editTextText3.getText());
-                intent.putExtra("name", name);
-                intent.putExtra("surname", surname);
-                intent.putExtra("othchestvo", otchestvo);
+               /* String otchestvo = String.valueOf(binding.editTextText3.getText());*/
+                Person person = new Person(name ,surname);
+                intent.putExtra("name", person);
+                /*intent.putExtra("othchestvo", otchestvo);*/
+               /* Person person = new Person("Tolya", 23);
+                intent.putExtra(Person.class.getSimpleName(), person);*/
                 startActivity(intent);
             }
 

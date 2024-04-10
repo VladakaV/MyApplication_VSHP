@@ -23,20 +23,25 @@ public class MainActivity2 extends AppCompatActivity {
         binding.btnSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+                Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                String age = String.valueOf(binding.editTextText3.getText());
                 startActivity(intent);
 
             };
         });
         Log.d("TAG", "OnCreate2: ");
 
-        Bundle arguments = getIntent().getExtras();
-        if (arguments!=null) {
-            String name = arguments.getString("name");
+        /*Bundle arguments = getIntent().getExtras();*/
+      /*  if (arguments!=null) {*/
+            /*String name = arguments.getString("name");
             String surname = arguments.getString("surname");
             String ot = arguments.getString("othchestvo");
-            binding.textView.setText(name+ "\n" + surname+ "\n" + ot);
-        }
+            binding.textView.setText(name+ "\n" + surname+ "\n" + ot);*/
+            /*Person person = (Person) arguments.getSerializable(Person.class.getSimpleName());
+            binding.textView.setText(person.getName() + person.getAge());*/
+
+       /*
+        }*/
 
     };
 
