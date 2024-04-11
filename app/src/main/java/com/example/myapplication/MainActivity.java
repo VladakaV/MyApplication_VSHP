@@ -7,9 +7,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.databinding.ActivityMainBinding;
 
@@ -25,34 +27,38 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         settings = getSharedPreferences(PREFS_FILE, MODE_PRIVATE);
-        getName();
+//        getName();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cars);
+        binding.listview.setAdapter(adapter);
         setContentView(binding.getRoot());
-
-
-        binding.button4.setOnClickListener(new View.OnClickListener() {
+//        binding.button4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+//                saveName();
+//                startActivity(intent);
+//            }
+//        });
+        binding.listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                saveName();
-                startActivity(intent);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, binding.listview.getItemAtPosition(position).toString(), Toast.LENGTH_LONG);
             }
-
         });
     };
 
-    public void saveName() {
-        EditText nameBox = binding.editTextText;
-        String name = nameBox.getText().toString();
-        SharedPreferences.Editor prefEditor = settings.edit();
-        prefEditor.putString(PREF_NAME, name);
-        prefEditor.apply();
-    }
-    public void getName() {
-        TextView nameView = binding.editTextText2;
-        String name = settings.getString(PREF_NAME, "не определено");
-        nameView.setText(name);
-    }
+//    public void saveName() {
+//        EditText nameBox = binding.editTextText;
+//        String name = nameBox.getText().toString();
+//        SharedPreferences.Editor prefEditor = settings.edit();
+//        prefEditor.putString(PREF_NAME, name);
+//        prefEditor.apply();
+//    }
+//    public void getName() {
+//        TextView nameView = binding.editTextText2;
+//        String name = settings.getString(PREF_NAME, "не определено");
+//        nameView.setText(name);
+//    }
 
 
 
