@@ -13,7 +13,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.Adapters.DataAdapter;
+import com.example.myapplication.Classes.Data;
 import com.example.myapplication.databinding.ActivityMainBinding;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,16 +25,30 @@ public class MainActivity extends AppCompatActivity {
     private static final String PREFS_FILE = "Account";
     private static final String PREF_NAME = "Name";
     SharedPreferences settings;
-    String[] cars = {"ASD", "fdfdf", "efefe", "eefe"};
+    String[] titles = {"Star", "Planet", "Command", "Row", "Ladder"};
+    String[] autors = {"John Cennedy", "Jim Beam", "Anna Lorak", "Swift Dartovich", "Micro USB"};
+    int[] images = {R.drawable.ic_launcher_foreground,
+            R.drawable.ic_launcher_background,
+            R.drawable.ic_launcher_foreground,
+            R.drawable.ic_launcher_background,
+            R.drawable.ic_launcher_foreground
+    };
+    ArrayList<Data> data = new ArrayList<Data>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        settings = getSharedPreferences(PREFS_FILE, MODE_PRIVATE);
+//        settings = getSharedPreferences(PREFS_FILE, MODE_PRIVATE);
 //        getName();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cars);
-        binding.listview.setAdapter(adapter);
+//       ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cars);
+//        binding.listview.setAdapter(adapter);
         setContentView(binding.getRoot());
+        for (int i=0; i<titles.length; i++) {
+            data.add(new Data(titles[i], autors[i], images[i], i));
+        }
+        DataAdapter adapter = new DataAdapter(this, data);
+        binding.listview.setAdapter(adapter);
+
 //        binding.button4.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -39,12 +57,12 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
-        binding.listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, binding.listview.getItemAtPosition(position).toString(), Toast.LENGTH_LONG);
-            }
-        });
+//        binding.listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(MainActivity.this, binding.listview.getItemAtPosition(position).toString(), Toast.LENGTH_LONG);
+//            }
+//        });
     };
 
 //    public void saveName() {
